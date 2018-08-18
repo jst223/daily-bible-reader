@@ -28,10 +28,10 @@ def print_today_bible(daystring):
     soup = BeautifulSoup(html, "html.parser")
 
     for each in soup.find_all(class_="bibleReadingsWrapper"):
-        if len(each.text)>50:
-            out_text = re.sub(r'</em>|<em>|</br>|<strong>|</strong>|<div>|</div>|<h4>|</h4>|</a>|<div class.*>|<a href=.*', " ", str(each.parent))
+        if len(str(each.parent))>50:
+            out_text = re.sub(r'</em>|<em>|</br>|<strong>|</strong>|<div>|</div>|<h4>|</h4>|</a>|<br/>|<div¥ class=¥"bibleReadingsWrapper¥">|<div class=¥"¥">', " ", str(each.text))
             out_text2 = re.sub(r'<br>', ' ', out_text)
-            sys.stdout.write(str(out_text2))
+            print(str(out_text2))
         else:
             return "TWO"
     return "OK"
