@@ -33,7 +33,7 @@ def p_today_bbl(day_str):
 #    print(html)
     soup = BeautifulSoup(html, "html.parser")
 
-    for each in soup.select(".content-body, .content-header > h3"):
+    for each in soup.select(".content-body, .content-header > h3, .content-header > div > a"):
 #        print(each)
         if len(str(each.parent)) > 50:
             out_text = re.sub(r'</em>|<em>|</br>|<strong>|</strong>|<div>|</div>|<h4>|</h4>|</a>|<br/>|<div¥ class=¥"bibleReadingsWrapper¥">|<div class=¥"¥">', " ", str(each.text))
